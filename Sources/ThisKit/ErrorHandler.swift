@@ -9,7 +9,7 @@ import AsyncAlgorithms
 import Foundation
 import SwiftUI
 
-public final class TKErrorHandler: ObservableObject {
+@Observable public final class TKErrorHandler {
   public static let `default` = TKErrorHandler()
 
   let logger: TKLogger
@@ -60,7 +60,7 @@ public final class TKErrorHandler: ObservableObject {
   }
 
   public struct TKErrorHandlerModifier: ViewModifier {
-    @EnvironmentObject private var errorHandler: TKErrorHandler
+    @Environment(TKErrorHandler.self) private var errorHandler
     @State private var didError = false
     @State private var error: NSError? = nil
 
